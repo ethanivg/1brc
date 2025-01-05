@@ -16,19 +16,33 @@
 package dev.morling.onebrc;
 
 import java.io.File;
+
 import java.io.IOException;
+
 import java.lang.foreign.Arena;
+
 import java.lang.foreign.MemorySegment;
+
 import java.lang.foreign.ValueLayout;
+
 import java.nio.BufferUnderflowException;
+
 import java.nio.channels.FileChannel;
+
 import java.nio.charset.StandardCharsets;
+
 import java.nio.file.Path;
+
 import java.nio.file.StandardOpenOption;
+
 import java.util.*;
+
 import java.util.concurrent.ExecutionException;
+
 import java.util.concurrent.ExecutorCompletionService;
+
 import java.util.concurrent.Executors;
+
 import java.util.concurrent.Future;
 
 public class CalculateAverage_moysesb {
@@ -36,26 +50,41 @@ public class CalculateAverage_moysesb {
     private static final String FILE = "./measurements.txt";
 
     static class ByteArray {
+
         final byte[] value;
+
         final int hashCode;
 
         private ByteArray(byte[] val, int hashCode) {
+
             this.value = val;
+
             this.hashCode = hashCode;
+
         }
 
         @Override
+
         public boolean equals(Object o) {
+
             if (o instanceof ByteArray other) {
+
                 return this == other || hashCode == other.hashCode && Arrays.equals(value, other.value);
+
             }
+
             return false;
+
         }
 
         @Override
+
         public int hashCode() {
+
             return hashCode;
+
         }
+
     }
 
     static final Map<ByteArray, double[]> allResults = new HashMap<>(512);
@@ -196,6 +225,9 @@ public class CalculateAverage_moysesb {
     }
 
     private static double round(double d) {
+
         return Math.round(d * 10.0) / 10.0;
+
     }
+
 }

@@ -16,32 +16,51 @@
 package dev.morling.onebrc;
 
 import jdk.incubator.vector.ByteVector;
+
 import jdk.incubator.vector.VectorSpecies;
 
 import java.io.IOException;
+
 import java.io.RandomAccessFile;
+
 import java.io.UncheckedIOException;
+
 import java.lang.foreign.Arena;
+
 import java.lang.foreign.MemorySegment;
+
 import java.nio.ByteOrder;
+
 import java.nio.channels.FileChannel;
+
 import java.nio.charset.StandardCharsets;
+
 import java.nio.file.Paths;
+
 import java.text.DecimalFormat;
+
 import java.text.DecimalFormatSymbols;
+
 import java.util.*;
+
 import java.util.concurrent.CompletableFuture;
+
 import java.util.concurrent.Executors;
+
 import java.util.concurrent.Future;
 
 import static java.lang.foreign.ValueLayout.OfByte.JAVA_BYTE;
+
 import static java.lang.foreign.ValueLayout.OfByte.JAVA_INT_UNALIGNED;
 
 public class CalculateAverage_Judekeyser {
+
     private static final String FILE = "./measurements.txt";
+
     private static final int chunkSize = (1 << 7) << 12; // This can't go beyond 2^21, because otherwise we might exceed int capacity
 
     private static final int numberOfIOWorkers = 1 << 8; // We are going to need (numberOfIOWorkers-1) * chunkSize capacity
+
     private static final int numberOfParallelWorkers = Runtime.getRuntime().availableProcessors() - 1;
 
     private static final VectorSpecies<Byte> SPECIES = ByteVector.SPECIES_PREFERRED;
@@ -411,4 +430,5 @@ public class CalculateAverage_Judekeyser {
             System.out.println(joiner);
         }
     }
+
 }

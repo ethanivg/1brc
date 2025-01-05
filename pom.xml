@@ -67,6 +67,12 @@
       <version>3.21.0</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.invirgance</groupId>
+      <artifactId>convirgance</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <type>jar</type>
+    </dependency>
   </dependencies>
 
   <build>
